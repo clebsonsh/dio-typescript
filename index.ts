@@ -1,22 +1,9 @@
-interface ICachorro {
-  nome: string
-  idade: number
-  parqueFavorito?: string
-}
+import $ from 'jquery'
 
-type ICachorroSomenteLeitura = {
-  readonly [K in keyof ICachorro]-?: ICachorro[K]
-}
-class Meuachorro implements ICachorroSomenteLeitura {
-  nome
-  idade
-  parqueFavorito
-
-  constructor(nome, idade, parqueFavorito) {
-    this.nome = nome
-    this.idade = idade
-    this.parqueFavorito = parqueFavorito
+$.fn.extend({
+  novaFuncao() {
+    console.log('Chamou nova função')
   }
-}
+})
 
-const cao = new Meuachorro('Apolo', 14, 'Mars')
+$('#input').novaFuncao()
