@@ -1,13 +1,22 @@
-interface IUsuario {
-  id: string,
-  email: string,
-  cargo?: 'gerente' | 'coordenador' | 'supervisor' | 'funcionario' 
+interface ICachorro {
+  nome: string
+  idade: number
+  parqueFavorito?: string
 }
 
-function redirecione(usuario: IUsuario) {
-  if (usuario.cargo) {
-    // redirecionar por cargo
+type ICachorroSomenteLeitura = {
+  readonly [K in keyof ICachorro]-?: ICachorro[K]
+}
+class Meuachorro implements ICachorroSomenteLeitura {
+  nome
+  idade
+  parqueFavorito
+
+  constructor(nome, idade, parqueFavorito) {
+    this.nome = nome
+    this.idade = idade
+    this.parqueFavorito = parqueFavorito
   }
-
-  // redirecionar quem não tem cargo
 }
+
+const cao = new Meuachorro('Apolo', 14, 'Mars')
